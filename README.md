@@ -2,6 +2,8 @@
 
 A fully responsive, production-ready MERN stack social media web application. This project was built to simulate a core "Social Feed" feature where users can authenticate, publish posts (text and image), interact with content via likes and comments, and see updates instantly.
 
+**Live Demo**: [https://mini-social-post-app-omega.vercel.app/](https://mini-social-post-app-omega.vercel.app/)
+
 ## 🌟 Features
 
 - **Authentication System**: Secure JSON Web Token (JWT) based login and registration with hashed passwords (bcrypt).
