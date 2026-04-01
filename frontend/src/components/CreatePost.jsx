@@ -40,8 +40,8 @@ const CreatePost = ({ user, onPostCreated }) => {
   };
 
   return (
-    <Paper className="glass" sx={{ p: 2, mb: 3, borderRadius: 3, position: 'relative' }}>
-      {loading && <LinearProgress sx={{ position: 'absolute', top: 0, left: 0, right: 0, borderTopLeftRadius: 12, borderTopRightRadius: 12 }} />}
+    <Paper className="glass" sx={{ p: 3, mb: 4, borderRadius: 4, position: 'relative', overflow: 'hidden' }}>
+      {loading && <LinearProgress color="secondary" sx={{ position: 'absolute', top: 0, left: 0, right: 0 }} />}
       <Box sx={{ display: 'flex', gap: 2 }}>
         <Avatar sx={{ bgcolor: 'secondary.main' }}>{user?.username?.charAt(0).toUpperCase()}</Avatar>
         <Box sx={{ flexGrow: 1 }}>
@@ -52,7 +52,7 @@ const CreatePost = ({ user, onPostCreated }) => {
             variant="standard"
             value={text}
             onChange={(e) => setText(e.target.value)}
-            InputProps={{ disableUnderline: true, style: { fontSize: '1.1rem' } }}
+            InputProps={{ disableUnderline: true, style: { fontSize: '1.15rem', lineHeight: 1.5 } }}
           />
           {image && (
             <Box sx={{ mt: 2, position: 'relative', display: 'inline-block' }}>
@@ -84,8 +84,9 @@ const CreatePost = ({ user, onPostCreated }) => {
         </Box>
         <Button 
           variant="contained" 
+          color="primary"
           endIcon={<SendIcon />}
-          sx={{ borderRadius: 8, fontWeight: 'bold' }}
+          sx={{ borderRadius: 8, fontWeight: 'bold', px: 3, py: 1, boxShadow: 2, transition: 'all 0.2s', '&:hover': { transform: 'translateY(-2px)', boxShadow: 4 } }}
           onClick={handlePost}
           disabled={loading || (!text && !image)}
         >

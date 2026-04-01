@@ -1,9 +1,10 @@
 :root {
-  --primary: #6366f1;
-  --bg-color: #f3f4f6;
-  --card-bg: rgba(255, 255, 255, 0.85);
-  --text-dark: #1f2937;
-  --text-light: #6b7280;
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+  --bg-color: #f8fafc;
+  --card-bg: rgba(255, 255, 255, 0.75);
+  --text-dark: #0f172a;
+  --text-light: #64748b;
 }
 
 body {
@@ -14,6 +15,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: linear-gradient(135deg, #e0e7ff 0%, #ede9fe 100%);
+  background-attachment: fixed;
   min-height: 100vh;
   color: var(--text-dark);
 }
@@ -25,16 +27,28 @@ body {
 /* Glassmorphic utilities */
 .glass {
   background: var(--card-bg) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.3) !important;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.app-container {
-  max-width: 600px; /* Mobile inspired */
-  margin: 0 auto;
-  min-height: 100vh;
-  background-color: transparent;
-  padding: 10px;
+.glass:hover {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Custom Scrollbar for modern feel */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.1);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0,0,0,0.2);
 }

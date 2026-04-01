@@ -32,15 +32,19 @@ const PostItem = ({ post, user, onUpdate }) => {
   };
 
   return (
-    <Card className="glass" sx={{ mb: 3, borderRadius: 3, boxShadow: '0 4px 12px rgba(0,0,0,0.05)' }}>
+    <Card className="glass" sx={{ mb: 4, borderRadius: 4, overflow: 'hidden' }}>
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: 'primary.main', fontWeight: 'bold' }}>
             {post.author.charAt(0).toUpperCase()}
           </Avatar>
         }
-        title={<Typography fontWeight="bold">{post.author}</Typography>}
-        subheader={new Date(post.createdAt).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' })}
+        title={<Typography fontWeight="700" variant="body1" color="text.primary">{post.author}</Typography>}
+        subheader={
+          <Typography variant="caption" color="text.secondary" fontWeight="500">
+            {new Date(post.createdAt).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' })}
+          </Typography>
+        }
       />
       
       {post.text && (
@@ -59,7 +63,14 @@ const PostItem = ({ post, user, onUpdate }) => {
       )}
 
       <CardActions disableSpacing sx={{ px: 2, pt: 1, pb: 1 }}>
-        <IconButton onClick={handleLike} sx={{ color: isLiked ? 'secondary.main' : 'text.secondary' }}>
+        <IconButton 
+          onClick={handleLike} 
+          sx={{ 
+            color: isLiked ? 'secondary.main' : 'text.secondary',
+            transition: 'transform 0.2s',
+            '&:active': { transform: 'scale(0.8)' }
+          }}
+        >
           {isLiked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
         </IconButton>
         <Typography variant="body2" sx={{ mr: 2, fontWeight: 'medium' }}>
@@ -92,9 +103,15 @@ const PostItem = ({ post, user, onUpdate }) => {
               placeholder="Write a comment..."
               value={commentText}
               onChange={e => setCommentText(e.target.value)}
-              sx={{ mr: 1, '& .MuiOutlinedInput-root': { borderRadius: 4, bgcolor: 'white' } }}
+              sx={{ mr: 1, '& .MuiOutlinedInput-root': { borderRadius: 8, bgcolor: 'rgba(255,255,255,0.8)' } }}
             />
-            <Button variant="contained" disabled={!commentText} sx={{ borderRadius: 4 }} onClick={handleComment}>
+            <Button 
+              variant="contained" 
+              color="primary"
+              disabled={!commentText} 
+              sx={{ borderRadius: 8, px: 3, boxShadow: 0 }} 
+              onClick={handleComment}
+            >
               Post
             </Button>
           </Box>

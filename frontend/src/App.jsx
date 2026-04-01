@@ -3,15 +3,17 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import AuthPage from './pages/AuthPage';
 import FeedPage from './pages/FeedPage';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { Container, CssBaseline } from '@mui/material';
 
 const theme = createTheme({
   palette: {
-    primary: { main: '#6366f1' },
-    secondary: { main: '#ec4899' },
+    primary: { main: '#4f46e5' },
+    secondary: { main: '#f43f5e' },
     background: { default: 'transparent' },
   },
   typography: {
     fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
+    button: { textTransform: 'none', fontWeight: 600 },
   },
   shape: {
     borderRadius: 16,
@@ -48,7 +50,8 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <div className="app-container">
+      <CssBaseline />
+      <Container maxWidth="sm" sx={{ minHeight: '100vh', py: 2 }}>
         <BrowserRouter>
           <Routes>
             <Route 
@@ -61,7 +64,7 @@ function App() {
             />
           </Routes>
         </BrowserRouter>
-      </div>
+      </Container>
     </ThemeProvider>
   );
 }

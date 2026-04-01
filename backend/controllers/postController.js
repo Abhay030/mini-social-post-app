@@ -20,12 +20,23 @@ const createPost = async (req, res) => {
   }
 };
 
-// @desc    Get all posts
+// @desc    Get all posts (paginated)
 // @route   GET /api/posts
 const getPosts = async (req, res) => {
   try {
-    const posts = await Post.find().sort({ createdAt: -1 });
-    res.json(posts);
+    const page = parseInt(req.query.page, 10) || 1;
+    const limit = parseInt(req.query.limit, 10) || 10;
+    const skip = (page - 1) * limit;
+
+    const total = await Post.countDocuments();
+    const posts = await Post.find().sort({ createdAt: -1 }).skip(skip).limit(limit);
+
+    res.json({
+      posts,
+      currentPage: page,
+      totalPages: Math.ceil(total / limit),
+      hasMore: total > skip + posts.length,
+    });
   } catch (err) {
     res.status(500).json({ message: "Server Error", error: err.message });
   }
